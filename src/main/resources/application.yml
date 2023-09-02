@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB-URL}
+    username: ${DB-USERNAME}
+    password: ${DB-PASSWORD}
+
+  logging:
+    level:
+      org:
+        hibernate:
+          SQL: debug
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+  auth:
+    jwt:
+      header: ${HEADER}
+      secret: ${SECRET}
+      accessExp: ${ACCESS-EXP}
+      refreshExp: ${ACCESS-EXP}
+      prefix: ${PREFIX}
