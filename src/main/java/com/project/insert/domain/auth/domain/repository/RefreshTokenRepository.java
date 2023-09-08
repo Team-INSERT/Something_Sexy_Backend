@@ -1,6 +1,6 @@
-package com.project.insert.auth.domain.repository;
+package com.project.insert.domain.auth.domain.repository;
 
-import com.project.insert.auth.domain.RefreshToken;
+import com.project.insert.domain.auth.domain.RefreshToken;
 import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 

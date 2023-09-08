@@ -1,4 +1,4 @@
-package com.project.insert.global.security.jwt.dto;
+package com.project.insert.global.jwt.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;

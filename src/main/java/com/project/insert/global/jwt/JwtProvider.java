@@ -1,13 +1,13 @@
-package com.project.insert.global.security.jwt;
+package com.project.insert.global.jwt;
 
-import com.project.insert.auth.domain.RefreshToken;
-import com.project.insert.auth.domain.repository.RefreshTokenRepository;
-import com.project.insert.global.security.jwt.dto.TokenResponseDto;
+import com.project.insert.domain.auth.domain.RefreshToken;
+import com.project.insert.domain.auth.domain.repository.RefreshTokenRepository;
+import com.project.insert.global.jwt.dto.TokenResponseDto;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import java.time.ZonedDateTime;
-import static com.project.insert.global.security.jwt.JwtConstants.*;
+import static com.project.insert.global.jwt.JwtConstants.*;
 
 @RequiredArgsConstructor
 public class JwtProvider {
