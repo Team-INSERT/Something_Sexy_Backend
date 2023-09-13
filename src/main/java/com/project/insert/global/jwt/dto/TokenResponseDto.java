@@ -2,8 +2,11 @@ package com.project.insert.global.jwt.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
+import lombok.Getter;
+
 import java.time.ZonedDateTime;
 
+@Getter
 public class TokenResponseDto {
     private String accessToken;
     private String refreshToken;

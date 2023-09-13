@@ -22,7 +22,7 @@ public class UserSignUpOrUpdateService {
     private final BsmOauth bsmOauth;
     private final UserRepository userRepository;
 
-    public User excute(String authId) throws IOException {
+    public User execute(String authId) throws IOException {
         String token;
         BsmResourceResponse resource;
 
@@ -39,7 +39,7 @@ public class UserSignUpOrUpdateService {
     }
 
     @Transactional
-    public User updateOrSignUp(BsmResourceResponse resource) {
+    protected User updateOrSignUp(BsmResourceResponse resource) {
         Optional<User> user = userRepository.findByEmail(resource.getEmail());
         if(user.isEmpty()) {
             return saveUser(resource);
@@ -49,7 +49,7 @@ public class UserSignUpOrUpdateService {
     }
 
     @Transactional
-    public User saveUser(BsmResourceResponse response) {
+    protected User saveUser(BsmResourceResponse response) {
         return userRepository.save(
             User.builder()
             .email(response.getEmail())
