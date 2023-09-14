@@ -1,4 +1,4 @@
-package com.project.insert.global.jwt;
+package com.project.insert.global.jwt.config;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,7 +1,8 @@
-package com.project.insert.global.jwt;
+package com.project.insert.global.jwt.util;
 
 import com.project.insert.domain.auth.domain.RefreshToken;
 import com.project.insert.domain.auth.domain.repository.RefreshTokenRepository;
+import com.project.insert.global.jwt.config.JwtProperties;
 import com.project.insert.global.jwt.dto.TokenResponseDto;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.ZonedDateTime;
-import static com.project.insert.global.jwt.JwtConstants.*;
+import static com.project.insert.global.jwt.config.JwtConstants.*;
 
 @RequiredArgsConstructor
 @Component

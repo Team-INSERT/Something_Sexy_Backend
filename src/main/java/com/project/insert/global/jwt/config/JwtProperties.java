@@ -1,4 +1,4 @@
-package com.project.insert.global.jwt;
+package com.project.insert.global.jwt.config;
 
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;

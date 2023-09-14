@@ -1,4 +1,4 @@
-package com.project.insert.domain.exception;
+package com.project.insert.domain.user.exception;
 
 import com.project.insert.global.error.Exception.ErrorCode;
 import com.project.insert.global.error.Exception.InsertException;
