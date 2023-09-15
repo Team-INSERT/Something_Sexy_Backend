@@ -36,7 +36,7 @@ public class JwtUtil {
         return Jwts.parser().setSigningKey(jwtProperties.getSecret()).parseClaimsJws(token);
     }
 
-    public Claims getBody(String bearer){
+    public Claims getJwtBody(String bearer){
         Jws<Claims> jwt = getJwt(bearer);
         return jwt.getBody();
     }
