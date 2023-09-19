@@ -7,6 +7,8 @@ import com.project.insert.global.jwt.exception.InvalidJwtException;
 import com.project.insert.global.jwt.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -24,6 +26,7 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = jwtUtil.resolveToken(request);
         checkLoginStatus(token);
+        SetAuthenticationInSecurityContext(token);
         filterChain.doFilter(request, response);
     }
 
@@ -37,5 +40,10 @@ public class JwtFilter extends OncePerRequestFilter {
 
         authIdRepository.findByAuthId(authId)
                 .orElseThrow(() -> UserNotLoginException.EXCEPTION);
+    }
+
+    private void SetAuthenticationInSecurityContext(String token){
+        Authentication authentication = jwtAuth.authentication(token);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
     }
 }
