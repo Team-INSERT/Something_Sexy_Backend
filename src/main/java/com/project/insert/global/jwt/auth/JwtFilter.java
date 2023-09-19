@@ -33,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private void checkLoginStatus(String token){
         Claims body = jwtUtil.getJwt(token).getBody();
 
-        if(body.isEmpty()){
+        if(body == null){
             throw InvalidJwtException.EXCEPTION;
         }
         String authId = body.get(JwtConstants.AUTH_ID.message).toString();
