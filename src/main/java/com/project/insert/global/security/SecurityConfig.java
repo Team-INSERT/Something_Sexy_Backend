@@ -37,14 +37,12 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .antMatchers(GET, "/**")
-                .authenticated()
-                .anyRequest()
-                .permitAll()
+                .antMatchers(GET, "/**").permitAll()
+                .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint(objectMapper))
                 .and()
-                .apply(new FilterConfig(jwtUtil, jwtAuth, authIdRepository));
+                .apply(new FilterConfig(jwtUtil, jwtAuth));
 
         return http.build();
     }
