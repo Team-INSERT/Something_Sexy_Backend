@@ -7,12 +7,12 @@ import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @Component
+@Slf4j
 @RequiredArgsConstructor
 public class JwtUtil {
     private final JwtProperties jwtProperties;
@@ -25,7 +25,7 @@ public class JwtUtil {
 
     public String parseToken(String bearer){
         if(bearer != null){
-            return  bearer.replaceAll(jwtProperties.getPrefix(), "").trim();
+            return bearer.replaceAll(jwtProperties.getPrefix(), "").trim();
         }
 
         return null;

@@ -19,13 +19,14 @@ spring:
     hibernate:
       ddl-auto: create
 
-  auth:
-    jwt:
-      header: ${HEADER}
-      secret: ${SECRET}
-      accessExp: ${ACCESS-EXP}
-      refreshExp: ${REFRESH-EXP}
-      prefix: ${PREFIX}
+auth:
+  jwt:
+    header: ${HEADER}
+    secret: ${SECRET}
+    accessExp: ${ACCESS-EXP}
+    refreshExp: ${REFRESH-EXP}
+    prefix: ${PREFIX}
+
 bsm:
   client-id: ${BSM_CLIENT_ID}
   secret-key: ${BSM_SECRET_KEY}
