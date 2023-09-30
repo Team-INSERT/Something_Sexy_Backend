@@ -65,6 +65,30 @@ public class PostService {
     }
 
 
+    /*게시글 세부 조회(읽기)*/
+    public PostReadDto readOne(Long postId){
+        Optional<Post> optionalPost = postRepository.findById(postId);
+
+        if(optionalPost.isEmpty()){
+            throw new IllegalArgumentException("해당 게시글이 없습니다");
+        }
+
+        Post post = optionalPost.get();
+
+        List<Image> imageList = imageRepository.findAllByPostId(postId);
+        List<ImageFormat> imageFormatList = new ArrayList<>();
+
+        if (imageList != null){
+            for (Image image : imageList){
+                ImageFormat imageFormat = new ImageFormat(image);
+                imageFormatList.add(imageFormat);
+            }
+        }
+
+        PostReadDto postReadDto = new PostReadDto(post.getTitle(), post.getContent(), imageFormatList);
+        return postReadDto;
+
+    }
 
 
     private List<MultipartFile> filesValidation(List<MultipartFile> files) throws IOException{
