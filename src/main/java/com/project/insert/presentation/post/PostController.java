@@ -3,12 +3,10 @@ package com.project.insert.presentation.post;
 import com.project.insert.domain.post.Post;
 import com.project.insert.domain.post.service.PostService;
 import com.project.insert.presentation.post.dto.PostDto;
+import com.project.insert.presentation.post.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -32,5 +30,10 @@ public class PostController {
     @GetMapping("/api/read/all")
     public List<PostDto> readAll() {
         return postService.readAll();
+    }
+
+    @GetMapping("/api/read/{id}")
+    public PostReadDto findOne(@PathVariable Long id){
+        return postService.readOne(id);
     }
 }
