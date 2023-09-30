@@ -1,14 +1,16 @@
 package com.project.insert.domain.user.service;
 
 import com.project.insert.domain.auth.domain.RefreshToken;
+import com.project.insert.domain.auth.domain.repository.AuthIdRepository;
 import com.project.insert.domain.auth.domain.repository.RefreshTokenRepository;
+import com.project.insert.domain.auth.service.UserSignUpOrUpdateService;
 import com.project.insert.domain.user.User;
 import com.project.insert.global.annotation.ServiceWithTransactionalReadOnly;
 import com.project.insert.global.jwt.config.JwtProperties;
 import com.project.insert.global.jwt.util.JwtProvider;
 import com.project.insert.global.jwt.dto.TokenResponseDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
+import com.project.insert.domain.auth.domain.AuthId;
 import java.io.IOException;
 
 @ServiceWithTransactionalReadOnly
@@ -16,26 +18,22 @@ import java.io.IOException;
 public class UserLoginService {
     private final UserSignUpOrUpdateService userSignUpOrUpdateService;
     private final JwtProvider jwtProvider;
-    private final RefreshTokenRepository refreshTokenRepository;
+    private final AuthIdRepository authIdRepository;
     private final JwtProperties jwtProperties;
 
-    @Transactional
     public TokenResponseDto execute(String authId) throws IOException {
         User user = userSignUpOrUpdateService.execute(authId);
-
-        return saveRefreshToken(jwtProvider.generateToken(user.getEmail(), user.getAuthority().name()), user.getEmail());
+        saveAuthId(user.getEmail());
+        return jwtProvider.generateToken(user.getEmail(), user.getAuthority().name());
     }
 
-    @Transactional
-    protected TokenResponseDto saveRefreshToken(TokenResponseDto tokenResponseDto, String id){
-        refreshTokenRepository.save(
-                RefreshToken.builder()
-                        .id(id)
-                        .refreshToken(tokenResponseDto.getRefreshToken())
-                        .ttl(jwtProperties.getRefreshExp() * 1000)
+    private void saveAuthId(String email) {
+        authIdRepository.save(
+                AuthId.builder()
+                        .id(email)
+                        .authId(email)
+                        .ttl(jwtProperties.getRefreshExp())
                         .build()
-
         );
-        return tokenResponseDto;
     }
 }

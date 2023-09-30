@@ -1,4 +1,4 @@
-package com.project.insert.domain.user.service;
+package com.project.insert.domain.auth.service;
 
 import com.project.insert.domain.user.exception.UserNotFoundException;
 import com.project.insert.domain.user.User;
