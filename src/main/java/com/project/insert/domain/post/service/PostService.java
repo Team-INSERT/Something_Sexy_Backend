@@ -28,7 +28,7 @@ public class PostService {
 
     /*게시글 생성*/
     @Transactional
-    public void createPost(PostDto postDto, List<MultipartFile> files) throws IOException{
+    public void createPost(PostDto postDto, List<MultipartFile> files, List<String> types) throws IOException{
 
         Post post = new Post(postDto.getTitle(), postDto.getContent());
         Post save = postRepository.save(post);
@@ -42,6 +42,27 @@ public class PostService {
             imageRepository.save(image);
         }
     }
+
+    /*게시글 전체 조회 및 썸네일 조회*/
+    public List<PostDto> readAll() {
+        List<Post> posts = postRepository.findAll();
+        List<PostDto> postDtos = new ArrayList<>();
+
+
+        for (Post post : posts) {
+            List<Image> imageList = imageRepository.findAllByPostId(post.getId());
+
+            PostDto postDto = new PostDto(post, imageList.get(1));
+
+
+            postDtos.add(postDto);
+        }
+
+        return postDtos;
+    }
+
+
+
 
     private List<MultipartFile> filesValidation(List<MultipartFile> files) throws IOException{
         String[] accessDeniedFileExtension = {"exe", "zip"};
