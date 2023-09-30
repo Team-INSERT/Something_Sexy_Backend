@@ -4,7 +4,9 @@ import com.project.insert.domain.post.Image;
 import com.project.insert.domain.post.Post;
 import com.project.insert.domain.post.entity.repository.ImageRepository;
 import com.project.insert.domain.post.entity.repository.PostRepository;
+import com.project.insert.presentation.post.dto.ImageFormat;
 import com.project.insert.presentation.post.dto.PostDto;
+import com.project.insert.presentation.post.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -52,7 +55,7 @@ public class PostService {
         for (Post post : posts) {
             List<Image> imageList = imageRepository.findAllByPostId(post.getId());
 
-            PostDto postDto = new PostDto(post, imageList.get(1));
+            PostDto postDto = new PostDto(post, imageList.get(0));
 
 
             postDtos.add(postDto);
