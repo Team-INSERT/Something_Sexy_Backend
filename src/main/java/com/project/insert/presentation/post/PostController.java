@@ -36,4 +36,10 @@ public class PostController {
     public PostReadDto findOne(@PathVariable Long id){
         return postService.readOne(id);
     }
+
+    @PutMapping("/api/update")
+    public void updatePost(@RequestPart("requestDto") PostDto postDto,
+                           @RequestPart(value = "files", required = false) List<MultipartFile> files) throws IOException {
+        postService.updatePost(postDto, files);
+    }
 }
