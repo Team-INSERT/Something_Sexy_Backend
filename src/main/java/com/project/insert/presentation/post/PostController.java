@@ -42,4 +42,9 @@ public class PostController {
                            @RequestPart(value = "files", required = false) List<MultipartFile> files) throws IOException {
         postService.updatePost(postDto, files);
     }
+
+    @DeleteMapping("/api/delete/{id}")
+    public void deletePost(@PathVariable Long id){
+        postService.deletePost(id);
+    }
 }

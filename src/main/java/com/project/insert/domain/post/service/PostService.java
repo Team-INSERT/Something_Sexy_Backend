@@ -124,6 +124,14 @@ public class PostService {
         }
     }
 
+    /*게시글 삭제*/
+    @Transactional
+    public void deletePost(Long postId){
+        imageRepository.deleteAllByPostId(postId);
+
+        postRepository.deleteById(postId);
+    }
+
     private List<MultipartFile> filesValidation(List<MultipartFile> files) throws IOException{
         String[] accessDeniedFileExtension = {"exe", "zip"};
         String[] accessDeniedFileContentType = {"application/x-msdos-program", "application/zip"};
