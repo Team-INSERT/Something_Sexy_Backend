@@ -13,7 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsUtils;
 
-import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -37,7 +37,11 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                .antMatchers(GET, "/**").permitAll()
+                .antMatchers(POST, "/api/create").hasAuthority("ADMIN")
+                .antMatchers(GET, "/api/read/all").hasAnyAuthority("USER","ADMIN")
+                .antMatchers(GET, "/api/read/**").hasAnyAuthority("USER","ADMIN")
+                .antMatchers(PUT, "/api/update").hasAuthority("ADMIN")
+                .antMatchers(DELETE, "/api/delete/**").hasAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint(objectMapper))
