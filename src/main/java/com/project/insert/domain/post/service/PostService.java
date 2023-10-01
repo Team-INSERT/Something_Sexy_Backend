@@ -90,6 +90,39 @@ public class PostService {
 
     }
 
+    /*게시글 수정*/
+    @Transactional
+    public void updatePost(PostDto postDto, List<MultipartFile> files) throws IOException {
+        Optional<Post> optionalPost = postRepository.findById(postDto.getId());
+
+        if(optionalPost.isEmpty()){
+            throw new IllegalArgumentException("존재하지 않는 글입니다");
+        }
+
+        Post post = optionalPost.get();
+        post.update(postDto);
+
+        // 새로운 이미지가 제공된 경우에만 기존 이미지 삭제 및 새로운 이미지 추가
+        if (files != null && !files.isEmpty()) {
+            List<MultipartFile> validatedFiles = filesValidation(files);
+
+            // 기존 이미지 삭제
+            List<Image> existingImages = imageRepository.findAllByPostId(post.getId());
+            for(Image image : existingImages){
+                imageRepository.delete(image);
+                // 실제 파일도 삭제하는 로직 추가 (선택적으로 사용)
+//                deleteImageFile(image.getUrl());
+            }
+
+            // 새로운 이미지 추가
+            filesUpload(validatedFiles, post.getId());
+
+            for(MultipartFile validatedFile : validatedFiles){
+                Image image = new Image(validatedFile, post);
+                imageRepository.save(image);
+            }
+        }
+    }
 
     private List<MultipartFile> filesValidation(List<MultipartFile> files) throws IOException{
         String[] accessDeniedFileExtension = {"exe", "zip"};
