@@ -1,5 +1,6 @@
 package com.project.insert.domain.post;
 
+import com.project.insert.presentation.post.dto.PostDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,12 @@ public class Post {
     public Post(String title, String content){
         this.title = title;
         this.content = content;
+        localDate = LocalDate.now();
+    }
+
+    public void update(PostDto postDto){
+        this.title = postDto.getTitle();
+        this.content = postDto.getContent();
         localDate = LocalDate.now();
     }
 
