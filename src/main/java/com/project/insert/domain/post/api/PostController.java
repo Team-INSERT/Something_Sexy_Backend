@@ -19,10 +19,8 @@ public class PostController {
     @PostMapping("/api/create")
     public void createPost(@RequestPart("requestDto") PostDto postDto,
                            @RequestPart(value = "files", required = false) List<MultipartFile> files) throws IOException{
-        List<String> types = new ArrayList<>();
-        types.add("thumbnail");
-        types.add("normal");
-        postService.createPost(postDto, files, types);
+
+        postService.createPost(postDto, files);
     }
 
     @GetMapping("/api/read/all")

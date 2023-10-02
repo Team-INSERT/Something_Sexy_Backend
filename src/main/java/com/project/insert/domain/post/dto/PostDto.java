@@ -22,12 +22,14 @@ public class PostDto {
     private LocalDate localDate;
     private String thumbnailUrl;
 
+    private String category;
 
     public PostDto(Post post, Image thumbnailUrl){
         this.id = post.getId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.localDate = post.getLocalDate();
+        this.category = post.getCategory().getName();
         this.thumbnailUrl = thumbnailUrl.getUrl();
     }
 }

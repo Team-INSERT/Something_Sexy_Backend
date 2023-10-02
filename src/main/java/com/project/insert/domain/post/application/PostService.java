@@ -1,5 +1,7 @@
 package com.project.insert.domain.post.application;
 
+import com.project.insert.domain.category.dao.CategoryRepository;
+import com.project.insert.domain.category.domain.Category;
 import com.project.insert.domain.image.domain.Image;
 import com.project.insert.domain.post.domain.Post;
 import com.project.insert.domain.image.dao.ImageRepository;
@@ -27,12 +29,22 @@ public class PostService {
 
     private final PostRepository postRepository;
     private final ImageRepository imageRepository;
+    private final CategoryRepository categoryRepository;
+
 
     /*게시글 생성*/
     @Transactional
-    public void createPost(PostDto postDto, List<MultipartFile> files, List<String> types) throws IOException{
+    public void createPost(PostDto postDto, List<MultipartFile> files) throws IOException{
 
         Post post = new Post(postDto.getTitle(), postDto.getContent());
+        Category category = categoryRepository.findByName(postDto.getCategory());
+
+        if(category == null){
+            category = new Category(postDto.getCategory());
+            categoryRepository.save(category);
+        }
+
+        post.setCategory(category);
         Post save = postRepository.save(post);
 
         List<MultipartFile> validatedFiles = filesValidation(files);
@@ -84,7 +96,7 @@ public class PostService {
             }
         }
 
-        PostReadDto postReadDto = new PostReadDto(post.getTitle(), post.getContent(), imageFormatList);
+        PostReadDto postReadDto = new PostReadDto(post.getTitle(), post.getContent(), post.getCategory() ,imageFormatList);
         return postReadDto;
 
     }

@@ -1,9 +1,11 @@
 package com.project.insert.domain.post.domain;
 
+import com.project.insert.domain.category.domain.Category;
 import com.project.insert.domain.post.dto.PostDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
+@Setter
 public class Post {
 
     @Id
@@ -28,6 +31,10 @@ public class Post {
     @LastModifiedDate
     private LocalDate localDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_category_id")
+    private Category category;
+
     public Post(String title, String content){
         this.title = title;
         this.content = content;
@@ -37,6 +44,7 @@ public class Post {
     public void update(PostDto postDto){
         this.title = postDto.getTitle();
         this.content = postDto.getContent();
+        this.category.setName(postDto.getCategory());
         localDate = LocalDate.now();
     }
 
