@@ -135,6 +135,24 @@ public class PostService {
         }
     }
 
+    /*카테고리별 조회*/
+    public List<PostDto> readCategory(String category) {
+        List<Post> posts = postRepository.findAll();
+        List<PostDto> postDtos = new ArrayList<>();
+
+
+        for (Post post : posts) {
+            if(post.getCategory().getName().equals(category)){
+                List<Image> imageList = imageRepository.findAllByPostId(post.getId());
+
+                PostDto postDto = new PostDto(post, imageList.get(0));
+
+                postDtos.add(postDto);
+            }
+        }
+        return postDtos;
+    }
+
     /*게시글 삭제*/
     @Transactional
     public void deletePost(Long postId){

@@ -33,6 +33,11 @@ public class PostController {
         return postService.readOne(id);
     }
 
+    @GetMapping("/api/read")
+    public List<PostDto> readCategory(@RequestParam("category") String category){
+        return postService.readCategory(category);
+    }
+
     @PutMapping("/api/update")
     public void updatePost(@RequestPart("requestDto") PostDto postDto,
                            @RequestPart(value = "files", required = false) List<MultipartFile> files) throws IOException {
