@@ -1,11 +1,9 @@
-package com.project.insert.presentation.post;
+package com.project.insert.domain.post.api;
 
-import com.project.insert.domain.post.Post;
-import com.project.insert.domain.post.service.PostService;
-import com.project.insert.presentation.post.dto.PostDto;
-import com.project.insert.presentation.post.dto.PostReadDto;
+import com.project.insert.domain.post.application.PostService;
+import com.project.insert.domain.post.dto.PostDto;
+import com.project.insert.domain.post.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

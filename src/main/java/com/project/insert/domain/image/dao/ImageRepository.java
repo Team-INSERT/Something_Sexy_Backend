@@ -1,6 +1,6 @@
-package com.project.insert.domain.post.entity.repository;
+package com.project.insert.domain.image.dao;
 
-import com.project.insert.domain.post.Image;
+import com.project.insert.domain.image.domain.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

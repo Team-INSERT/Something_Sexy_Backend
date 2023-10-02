@@ -1,19 +1,18 @@
-package com.project.insert.domain.post.service;
+package com.project.insert.domain.post.application;
 
-import com.project.insert.domain.post.Image;
-import com.project.insert.domain.post.Post;
-import com.project.insert.domain.post.entity.repository.ImageRepository;
-import com.project.insert.domain.post.entity.repository.PostRepository;
-import com.project.insert.presentation.post.dto.ImageFormat;
-import com.project.insert.presentation.post.dto.PostDto;
-import com.project.insert.presentation.post.dto.PostReadDto;
+import com.project.insert.domain.image.domain.Image;
+import com.project.insert.domain.post.domain.Post;
+import com.project.insert.domain.image.dao.ImageRepository;
+import com.project.insert.domain.post.dao.PostRepository;
+import com.project.insert.domain.image.dto.ImageFormat;
+import com.project.insert.domain.post.dto.PostDto;
+import com.project.insert.domain.post.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.plaf.multi.MultiListUI;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;

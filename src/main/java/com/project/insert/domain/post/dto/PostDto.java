@@ -1,7 +1,7 @@
-package com.project.insert.presentation.post.dto;
+package com.project.insert.domain.post.dto;
 
-import com.project.insert.domain.post.Image;
-import com.project.insert.domain.post.Post;
+import com.project.insert.domain.image.domain.Image;
+import com.project.insert.domain.post.domain.Post;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

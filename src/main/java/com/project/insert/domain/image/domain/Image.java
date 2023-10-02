@@ -1,5 +1,6 @@
-package com.project.insert.domain.post;
+package com.project.insert.domain.image.domain;
 
+import com.project.insert.domain.post.domain.Post;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
