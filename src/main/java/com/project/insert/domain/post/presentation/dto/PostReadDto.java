@@ -1,7 +1,7 @@
-package com.project.insert.domain.post.dto;
+package com.project.insert.domain.post.presentation.dto;
 
 import com.project.insert.domain.category.domain.Category;
-import com.project.insert.domain.image.dto.ImageFormat;
+import com.project.insert.domain.image.presentation.dto.ImageFormat;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,4 +1,4 @@
-package com.project.insert.domain.category.dao;
+package com.project.insert.domain.category.domain.repository;
 
 import com.project.insert.domain.category.domain.Category;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.project.insert.domain.image.dto;
+package com.project.insert.domain.image.presentation.dto;
 
 import com.project.insert.domain.image.domain.Image;
 import lombok.Getter;

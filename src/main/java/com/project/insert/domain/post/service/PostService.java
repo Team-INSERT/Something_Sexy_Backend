@@ -1,14 +1,14 @@
-package com.project.insert.domain.post.application;
+package com.project.insert.domain.post.service;
 
-import com.project.insert.domain.category.dao.CategoryRepository;
+import com.project.insert.domain.category.domain.repository.CategoryRepository;
 import com.project.insert.domain.category.domain.Category;
 import com.project.insert.domain.image.domain.Image;
 import com.project.insert.domain.post.domain.Post;
-import com.project.insert.domain.image.dao.ImageRepository;
-import com.project.insert.domain.post.dao.PostRepository;
-import com.project.insert.domain.image.dto.ImageFormat;
-import com.project.insert.domain.post.dto.PostDto;
-import com.project.insert.domain.post.dto.PostReadDto;
+import com.project.insert.domain.image.domain.repository.ImageRepository;
+import com.project.insert.domain.post.domain.repository.PostRepository;
+import com.project.insert.domain.image.presentation.dto.ImageFormat;
+import com.project.insert.domain.post.presentation.dto.PostDto;
+import com.project.insert.domain.post.presentation.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

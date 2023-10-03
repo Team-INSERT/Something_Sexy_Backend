@@ -1,14 +1,13 @@
-package com.project.insert.domain.post.api;
+package com.project.insert.domain.post.presentation;
 
-import com.project.insert.domain.post.application.PostService;
-import com.project.insert.domain.post.dto.PostDto;
-import com.project.insert.domain.post.dto.PostReadDto;
+import com.project.insert.domain.post.service.PostService;
+import com.project.insert.domain.post.presentation.dto.PostDto;
+import com.project.insert.domain.post.presentation.dto.PostReadDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

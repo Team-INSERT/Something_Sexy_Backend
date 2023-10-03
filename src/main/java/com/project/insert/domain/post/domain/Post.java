@@ -1,7 +1,7 @@
 package com.project.insert.domain.post.domain;
 
 import com.project.insert.domain.category.domain.Category;
-import com.project.insert.domain.post.dto.PostDto;
+import com.project.insert.domain.post.presentation.dto.PostDto;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

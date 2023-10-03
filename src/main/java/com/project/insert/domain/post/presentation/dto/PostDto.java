@@ -1,4 +1,4 @@
-package com.project.insert.domain.post.dto;
+package com.project.insert.domain.post.presentation.dto;
 
 import com.project.insert.domain.image.domain.Image;
 import com.project.insert.domain.post.domain.Post;

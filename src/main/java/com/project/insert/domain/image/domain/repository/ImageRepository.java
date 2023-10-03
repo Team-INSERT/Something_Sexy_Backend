@@ -1,4 +1,4 @@
-package com.project.insert.domain.image.dao;
+package com.project.insert.domain.image.domain.repository;
 
 import com.project.insert.domain.image.domain.Image;
 import org.springframework.data.jpa.repository.JpaRepository;
