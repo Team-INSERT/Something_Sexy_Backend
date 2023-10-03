@@ -1,10 +1,8 @@
 package com.project.insert.domain.user.service;
 
-import com.project.insert.domain.auth.domain.RefreshToken;
 import com.project.insert.domain.auth.domain.repository.AuthIdRepository;
-import com.project.insert.domain.auth.domain.repository.RefreshTokenRepository;
 import com.project.insert.domain.auth.service.UserSignUpOrUpdateService;
-import com.project.insert.domain.user.User;
+import com.project.insert.domain.user.domain.User;
 import com.project.insert.global.annotation.ServiceWithTransactionalReadOnly;
 import com.project.insert.global.jwt.config.JwtProperties;
 import com.project.insert.global.jwt.util.JwtProvider;

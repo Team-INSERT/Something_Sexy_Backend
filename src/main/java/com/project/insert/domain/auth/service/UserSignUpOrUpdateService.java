@@ -1,9 +1,9 @@
 package com.project.insert.domain.auth.service;
 
 import com.project.insert.domain.user.exception.UserNotFoundException;
-import com.project.insert.domain.user.User;
-import com.project.insert.domain.user.entity.authority.Authority;
-import com.project.insert.domain.user.entity.repository.UserRepository;
+import com.project.insert.domain.user.domain.User;
+import com.project.insert.domain.user.domain.authority.Authority;
+import com.project.insert.domain.user.domain.repository.UserRepository;
 import com.project.insert.global.annotation.ServiceWithTransactionalReadOnly;
 import com.project.insert.global.oauth.exception.BsmAuthIdInvalidClientException;
 import leehj050211.bsmOauth.BsmOauth;

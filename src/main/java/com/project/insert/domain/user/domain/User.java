@@ -1,6 +1,6 @@
-package com.project.insert.domain.user;
+package com.project.insert.domain.user.domain;
 
-import com.project.insert.domain.user.entity.authority.Authority;
+import com.project.insert.domain.user.domain.authority.Authority;
 import leehj050211.bsmOauth.dto.response.BsmResourceResponse;
 import lombok.*;
 import javax.persistence.*;

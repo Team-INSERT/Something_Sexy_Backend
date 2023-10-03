@@ -1,6 +1,6 @@
 package com.project.insert.global.security.auth;
 
-import com.project.insert.domain.user.User;
+import com.project.insert.domain.user.domain.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

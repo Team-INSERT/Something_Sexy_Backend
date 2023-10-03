@@ -1,6 +1,6 @@
 package com.project.insert.global.security.auth;
 
-import com.project.insert.domain.user.entity.repository.UserRepository;
+import com.project.insert.domain.user.domain.repository.UserRepository;
 import com.project.insert.domain.user.exception.UserNotFoundException;
 import com.project.insert.global.annotation.ServiceWithTransactionalReadOnly;
 import lombok.RequiredArgsConstructor;
