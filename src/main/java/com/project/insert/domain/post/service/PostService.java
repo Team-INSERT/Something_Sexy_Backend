@@ -9,6 +9,8 @@ import com.project.insert.domain.post.domain.repository.PostRepository;
 import com.project.insert.domain.image.presentation.dto.ImageFormat;
 import com.project.insert.domain.post.presentation.dto.PostDto;
 import com.project.insert.domain.post.presentation.dto.PostReadDto;
+import com.project.insert.domain.user.domain.User;
+import com.project.insert.domain.user.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -30,13 +32,15 @@ public class PostService {
     private final PostRepository postRepository;
     private final ImageRepository imageRepository;
     private final CategoryRepository categoryRepository;
+    private final UserRepository userRepository;
 
 
     /*게시글 생성*/
     @Transactional
     public void createPost(PostDto postDto, List<MultipartFile> files) throws IOException{
 
-        Post post = new Post(postDto.getTitle(), postDto.getContent());
+        User author = userRepository.findByNickname(postDto.getAuthor()).get();
+        Post post = new Post(postDto.getTitle(), postDto.getContent(), author);
         Category category = categoryRepository.findByName(postDto.getCategory());
 
         if(category == null){
@@ -68,7 +72,6 @@ public class PostService {
 
             PostDto postDto = new PostDto(post, imageList.get(0));
 
-
             postDtos.add(postDto);
         }
 
@@ -96,7 +99,7 @@ public class PostService {
             }
         }
 
-        PostReadDto postReadDto = new PostReadDto(post.getTitle(), post.getContent(), post.getCategory() ,imageFormatList);
+        PostReadDto postReadDto = new PostReadDto(post ,imageFormatList);
         return postReadDto;
 
     }

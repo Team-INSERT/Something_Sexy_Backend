@@ -23,7 +23,7 @@ public class PostDto {
     private String thumbnailUrl;
 
     private String category;
-
+    private String author;
     public PostDto(Post post, Image thumbnailUrl){
         this.id = post.getId();
         this.title = post.getTitle();
@@ -31,5 +31,6 @@ public class PostDto {
         this.localDate = post.getLocalDate();
         this.category = post.getCategory().getName();
         this.thumbnailUrl = thumbnailUrl.getUrl();
+        this.author = post.getAuthor().getNickname();
     }
 }
