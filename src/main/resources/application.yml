@@ -33,4 +33,4 @@ bsm:
   redirect-url: ${BSM_REDIRECT_URL}
 
 server:
-  port: 80
+  port: ${PORT}
